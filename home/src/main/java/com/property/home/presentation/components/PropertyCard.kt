@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -37,11 +38,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.property.core.presentation.components.CoilImageComponent
-import com.property.home.R
 import com.property.core.model.Property
 import com.property.core.presentation.SharedViewModel
+import com.property.core.presentation.components.CoilImageComponent
+import com.property.home.R
 import com.property.home.presentation.HomeViewModel
 import com.property.home.presentation.uievent.HomeUIEvent
 import java.util.Locale
@@ -111,7 +111,9 @@ fun FavoriteIcon(modifier: Modifier) {
 fun SearchBar(viewModel: HomeViewModel) {
     val searchQuery by viewModel.searchQuery.collectAsState()
 
-    Row(modifier = Modifier.padding(16.dp)) {
+    Row(modifier = Modifier
+        .padding(16.dp)
+        .imePadding()) {
         TextField(
             value = searchQuery,
             onValueChange = { newValue ->
@@ -124,7 +126,7 @@ fun SearchBar(viewModel: HomeViewModel) {
                     RoundedCornerShape(32.dp)
                 ),
             textStyle = LocalTextStyle.current.copy(
-                fontSize = 16.sp
+                fontSize = 12.sp
             ), leadingIcon = {
                 Icon(Icons.Default.Search, contentDescription = "Search", tint = Color.Black)
             },

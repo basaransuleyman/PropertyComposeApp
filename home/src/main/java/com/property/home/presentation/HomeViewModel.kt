@@ -48,7 +48,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private suspend fun getPropertyList() {
+    suspend fun getPropertyList() {
         getPropertyListUseCase.getPropertyList()
             .onStart {
                 updateUiState { copy(isLoading = true) }
@@ -69,7 +69,7 @@ class HomeViewModel @Inject constructor(
             }
     }
 
-    override suspend fun handleEvent(event: HomeUIEvent) {
+    public override suspend fun handleEvent(event: HomeUIEvent) {
         when (event) {
             HomeUIEvent.LoadInitialHome -> {
                 getInitialHome()

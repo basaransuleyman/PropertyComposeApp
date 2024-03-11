@@ -28,13 +28,12 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.property.core.model.Property
@@ -56,7 +55,7 @@ fun DetailScreen(sharedViewModel: SharedViewModel) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = "Back",
-                        tint = Color.White
+                        tint = White
                     )
                 },
                 actions = {
@@ -64,18 +63,18 @@ fun DetailScreen(sharedViewModel: SharedViewModel) {
                         Icon(
                             painter = painterResource(id = R.drawable.share),
                             contentDescription = "Share",
-                            tint = Color.White
+                            tint = White
                         )
                     }
                     IconButton(onClick = { /*   */ }) {
                         Icon(
                             painter = painterResource(id = R.drawable.heart),
                             contentDescription = "Favourite",
-                            tint = Color.White
+                            tint = White
                         )
                     }
                 },
-                colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color.Transparent)
+                colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Transparent)
             )
         }
     ) {
@@ -123,7 +122,7 @@ fun DetailScreen(sharedViewModel: SharedViewModel) {
                             .fillMaxWidth()
                             .padding(16.dp)
                     ) {
-                        PropertyDetailContent(property, imageOverlapSize)
+                        PropertyDetailContent(property)
                     }
                 }
             }
@@ -133,7 +132,7 @@ fun DetailScreen(sharedViewModel: SharedViewModel) {
 
 
 @Composable
-fun PropertyDetailContent(property: Property, overlapSize: Dp) {
+fun PropertyDetailContent(property: Property) {
      Column(modifier = Modifier.padding(16.dp)) {
         Text(
             text = property.category,
